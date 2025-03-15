@@ -1,0 +1,13 @@
+using UnityEngine;
+
+// we can pack data in a .txt format so we can save thins in json format
+[System.Serializable]
+public class SaveData
+{
+    public Vector3 playerPosition;
+
+    public string mapBoundary; // boundary name for the map
+
+
+
+}
