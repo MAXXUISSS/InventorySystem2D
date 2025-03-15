@@ -31,13 +31,13 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         canvasGroup.blocksRaycasts = true;//enable raycasts
         canvasGroup.alpha = 1f;// no longer transparent
 
-        Slot dropSlot = eventData.pointerEnter?.GetComponent<Slot>();// Slot where item dropped
-        Slot originalSlot = originalParent.GetComponent<Slot>();
+        Slot dropSlot = eventData.pointerEnter?.GetComponent<Slot>();
+        Slot originalSlot = originalParent?.GetComponent<Slot>();
 
-        if(dropSlot == null)// fix to not grab the slot, only the item 
+        if (dropSlot == null)
         {
             GameObject dropItem = eventData.pointerEnter;
-            if(dropItem != null)
+            if (dropItem != null)
             {
                 dropSlot = dropItem.GetComponentInParent<Slot>();
             }
@@ -45,38 +45,33 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (dropSlot != null)
         {
-            if(dropSlot.currentItem != null)// we check if the slot is occupied and if it is we swap the items 
+            if (dropSlot.currentItem != null)
             {
-                dropSlot.currentItem.transform.SetParent(originalSlot.transform);
-                originalSlot.currentItem = dropSlot.currentItem;
+                dropSlot.currentItem.transform.SetParent(originalSlot?.transform);
+                if (originalSlot != null)
+                {
+                    originalSlot.currentItem = dropSlot.currentItem;
+                }
                 dropSlot.currentItem.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-
-
             }
-            else
+            else if (originalSlot != null)
             {
                 originalSlot.currentItem = null;
-
             }
-            //Move item into a drop slot
 
             transform.SetParent(dropSlot.transform);
             dropSlot.currentItem = gameObject;
-
         }
         else
         {
-            //No drop under drop point
             transform.SetParent(originalParent);
-
         }
 
-        GetComponent<RectTransform>().anchoredPosition = Vector2.zero; //Center
-
+        GetComponent<RectTransform>().anchoredPosition = Vector2.zero; // Center
     }
 
-    
-   
+
+
 }
 
-    
+
