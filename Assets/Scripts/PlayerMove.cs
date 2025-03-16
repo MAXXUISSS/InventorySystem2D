@@ -11,6 +11,11 @@ public class PlayerMove : MonoBehaviour
     // Animation variable
     private Animator animator;
 
+    //Footsteps sounds
+    private bool playingFootsteps = false;
+    private float footstepSpeed = 0.5f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -24,6 +29,8 @@ public class PlayerMove : MonoBehaviour
         {
             rb.linearVelocity = Vector2.zero;
             animator.SetBool("isWalking", false);
+            //Stop footsteps
+            StopFootsteps();
             return;
         }
 
@@ -31,10 +38,19 @@ public class PlayerMove : MonoBehaviour
         rb.linearVelocity = moveInput * moveSpeed;
         animator.SetBool("isWalking",rb.linearVelocity.magnitude > 0);
 
+        //Start Footsteps
+        if(rb.linearVelocity.magnitude > 0 && !playingFootsteps)
+        {
+            StartFootsteps();
+        }
+        else if(rb.linearVelocity.magnitude == 0)
+        {
+            StopFootsteps();
+        }
         // Check if player is moving
         if (moveInput != Vector2.zero)
         {
-            
+
             animator.SetFloat("InputX", moveInput.x);
             animator.SetFloat("InputY", moveInput.y);
 
@@ -62,4 +78,22 @@ public class PlayerMove : MonoBehaviour
             moveInput = Vector2.zero; // Stops Rigidbody movement
         }
     }
+    void StartFootsteps()
+    {
+        playingFootsteps = true;
+        InvokeRepeating(nameof(PlayFootstep), 0f, footstepSpeed);
+        
+    }
+    void StopFootsteps()
+    {
+        playingFootsteps = false;
+        CancelInvoke(nameof(PlayFootstep));
+    }
+
+    void PlayFootstep()
+    {
+        SoundEffectManager.Play("Footsteps",true);
+    }
+
+        
 }

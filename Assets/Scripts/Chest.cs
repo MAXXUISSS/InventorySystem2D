@@ -37,7 +37,7 @@ public class Chest : MonoBehaviour, IInteractable
     private void OpenChest()
     {
         SetOpened(true);
-
+        SoundEffectManager.Play("Chest");// reproduce sound when open chest
         // Generar el objeto si el cofre tiene un itemPrefab
         if (itemPrefab)
         {
