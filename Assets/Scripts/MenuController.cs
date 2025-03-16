@@ -14,7 +14,14 @@ public class MenuController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            //if its the game paused for another thing that its not the menu
+            //for example dialog, i made this so i do not confuse the logic pause when i open the menu
+            if(!menuCanvas.activeSelf && PauseController.IsGamePaused)
+            {
+                return;
+            }
             menuCanvas.SetActive(!menuCanvas.activeSelf);
+            PauseController.SetPause(menuCanvas.activeSelf);
         }
 
     }

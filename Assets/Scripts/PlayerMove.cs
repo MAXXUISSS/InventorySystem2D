@@ -16,16 +16,25 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
     }
-
+    
     void Update()
     {
+        //Stop player movement when pause
+        if (PauseController.IsGamePaused)
+        {
+            rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isWalking", false);
+            return;
+        }
+
         // Move the player
         rb.linearVelocity = moveInput * moveSpeed;
+        animator.SetBool("isWalking",rb.linearVelocity.magnitude > 0);
 
         // Check if player is moving
         if (moveInput != Vector2.zero)
         {
-            animator.SetBool("isWalking", true);
+            
             animator.SetFloat("InputX", moveInput.x);
             animator.SetFloat("InputY", moveInput.y);
 
