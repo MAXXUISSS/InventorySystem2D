@@ -13,6 +13,7 @@ public class SaveData
     //Inventory data
 
     public List<InventorySaveData> inventorySaveData;
+    public List<InventorySaveData> hotbarSaveData;
 
 
 
