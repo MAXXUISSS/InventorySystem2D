@@ -44,6 +44,9 @@ public class SaveController : MonoBehaviour
 
             FindFirstObjectByType<CinemachineConfiner2D>().BoundingShape2D = GameObject.Find(saveData.mapBoundary).GetComponent<PolygonCollider2D>();
 
+            //Map 
+            MapController_Manual.Instance?.HighlightArea(saveData.mapBoundary);
+
             Debug.Log("Game Loaded!");
 
             inventoryController.SetInventoryItems(saveData.inventorySaveData);

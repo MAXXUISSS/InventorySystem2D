@@ -25,6 +25,8 @@ public class MapTransition : MonoBehaviour
             confiner.InvalidateBoundingShapeCache();
 
             UpdatePlayerPosition(collision.gameObject);
+
+            MapController_Manual.Instance?.HighlightArea(mapBoundry.name);
         }
     }
 
