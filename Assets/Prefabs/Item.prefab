@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5265179900781512247}
   - component: {fileID: -5671182093167288669}
   - component: {fileID: 5132401191796774637}
+  - component: {fileID: -2724910997486796103}
   m_Layer: 5
   m_Name: Item
   m_TagString: Item
@@ -104,6 +105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f6babec590ba444ac688f219bfcb2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minDropDistance: 2
+  maxDropDistance: 3
 --- !u!114 &5265179900781512247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 2
-  Name: Potion
+  Name: Soup
 --- !u!212 &-5671182093167288669
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -209,3 +212,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &-2724910997486796103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185384366797947285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0853fb7ede1f04c46b33453fe17b1c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceHeight: 0.3
+  bounceDuracion: 0.4
+  bounceCount: 2

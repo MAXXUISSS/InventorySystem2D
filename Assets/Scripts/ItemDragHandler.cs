@@ -7,6 +7,11 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     Transform originalParent;// if we throw the item out of the inventory it will snap back to its place
     CanvasGroup canvasGroup;
 
+    //Distance for item to drop
+
+    public float minDropDistance = 2f;
+    public float maxDropDistance = 3f;
+
 
     void Start()
     {
@@ -26,8 +31,9 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         transform.position = eventData.position; 
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    public void OnEndDrag(PointerEventData eventData )
     {
+        
         canvasGroup.blocksRaycasts = true;//enable raycasts
         canvasGroup.alpha = 1f;// no longer transparent
 
@@ -45,8 +51,10 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
         if (dropSlot != null)
         {
+            //is a slot under drop point
             if (dropSlot.currentItem != null)
             {
+                //slot has an item - swap items
                 dropSlot.currentItem.transform.SetParent(originalSlot?.transform);
                 if (originalSlot != null)
                 {
@@ -64,10 +72,58 @@ public class ItemDragHandler : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         }
         else
         {
-            transform.SetParent(originalParent);
+            // if where we're droppin is not within the inventory
+           
+            if (!IsWhitinInventory(eventData.position))
+            {
+                // Drop our item
+                DropItem(originalSlot);
+            }
+            else
+            {
+                //Snap back to the og slot
+                transform.SetParent(originalParent);
+            }
+
+
+                
+                
         }
 
         GetComponent<RectTransform>().anchoredPosition = Vector2.zero; // Center
+    }
+
+    bool IsWhitinInventory(Vector2 mousePosition)
+    {
+        RectTransform inventoryRect = originalParent.parent.GetComponent<RectTransform>();
+        return RectTransformUtility.RectangleContainsScreenPoint(inventoryRect, mousePosition);//check if the mouse is inside the rectangle inventory
+
+
+    }
+
+    void DropItem(Slot originalSlot)
+    {
+        originalSlot.currentItem = null;
+
+        //FindPlayer
+        Transform playerTransform = GameObject.FindGameObjectWithTag("Player" )?.transform;
+        if(playerTransform == null)
+        {
+            Debug.LogError("Missing 'Player' tag");
+            return;
+        }
+
+        //Random drop position
+        Vector2 dropOffSet = Random.insideUnitCircle.normalized * Random.Range(minDropDistance, maxDropDistance);
+        Vector2 dropPosition =(Vector2)playerTransform.position + dropOffSet;
+
+        //Instantiate drop item and bounce
+
+        GameObject dropItem = Instantiate(gameObject, dropPosition, Quaternion.identity);
+        dropItem.GetComponent<BounceEffect>().StartBounce();
+        //Destroy the UI one
+
+        Destroy(gameObject);
     }
 
 
