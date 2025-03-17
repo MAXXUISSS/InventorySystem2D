@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34c5ccf3d5cdde43b9455b4b1d75dfe, type: 3}
+  m_Name: BlackSmithDialogue
+  m_EditorClassIdentifier: 
+  npcName: BlackSmith Dave
+  npcPortrait: {fileID: -7527145504033472756, guid: 331e2df0158da7a43b9dfa45e91af462, type: 3}
+  dialogueLines:
+  - Hello adventurer!
+  - i'm just finishing some equipment for you
+  - Come back later!
+  - I would'be finish later if the goverment don't took my taxes
+  - now i have to work twice for get some profit!
+  - now i have to work twice for get some profit!
+  autoProgressLines: 0101010101
+  typingSpeed: 0.05
+  voiceSound: {fileID: 8300000, guid: 786f33e705b21d84e985070b2e3bc6b2, type: 3}
+  voicePitch: 1
+  autoProgressDelay: 1.5
