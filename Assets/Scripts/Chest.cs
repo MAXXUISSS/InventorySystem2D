@@ -38,7 +38,7 @@ public class Chest : MonoBehaviour, IInteractable
     {
         SetOpened(true);
         SoundEffectManager.Play("Chest");// reproduce sound when open chest
-        // Generar el objeto si el cofre tiene un itemPrefab
+        // Generate object when open 
         if (itemPrefab)
         {
             GameObject droppedItem = Instantiate(itemPrefab, transform.position + Vector3.down, Quaternion.identity);

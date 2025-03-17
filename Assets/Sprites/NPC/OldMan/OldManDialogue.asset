@@ -18,8 +18,9 @@ MonoBehaviour:
   - Hello young adventurer!
   - Take a soup before you start your journey!
   - Take it from the chest right there.
-  autoProgressLines: 000000
+  - 
+  autoProgressLines: 010101
   typingSpeed: 0.05
   voiceSound: {fileID: 8300000, guid: 786f33e705b21d84e985070b2e3bc6b2, type: 3}
-  VoicePitch: 1
+  voicePitch: 1
   autoProgressDelay: 1.5

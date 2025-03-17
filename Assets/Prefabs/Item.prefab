@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: -5671182093167288669}
   - component: {fileID: 5132401191796774637}
   - component: {fileID: -2724910997486796103}
+  - component: {fileID: -7110002114234055262}
+  - component: {fileID: -5376924888401369037}
   m_Layer: 5
   m_Name: Item
   m_TagString: Item
@@ -227,3 +229,44 @@ MonoBehaviour:
   bounceHeight: 0.3
   bounceDuracion: 0.4
   bounceCount: 2
+--- !u!50 &-7110002114234055262
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185384366797947285}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &-5376924888401369037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9185384366797947285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d52a5127e9df3d47a9314aaa2680366, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TitleText: Soup
+  DetailsText: +5 hp

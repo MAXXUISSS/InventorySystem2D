@@ -12,6 +12,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 463577629, guid: 8feaaab70bdec8e40bac3383bedc586d, type: 3}
+    - target: {fileID: -5376924888401369037, guid: 8442b4faf90121c44b026c67b02a7923, type: 3}
+      propertyPath: TitleText
+      value: Skull
+      objectReference: {fileID: 0}
+    - target: {fileID: -5376924888401369037, guid: 8442b4faf90121c44b026c67b02a7923, type: 3}
+      propertyPath: DetailsText
+      value: +10 undead damage
+      objectReference: {fileID: 0}
+    - target: {fileID: -4795866631507584990, guid: 8442b4faf90121c44b026c67b02a7923, type: 3}
+      propertyPath: message
+      value: +10 poison armor
+      objectReference: {fileID: 0}
     - target: {fileID: 1054328902561904892, guid: 8442b4faf90121c44b026c67b02a7923, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -96,6 +108,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 463577629, guid: 8feaaab70bdec8e40bac3383bedc586d, type: 3}
+    - target: {fileID: 5265179900781512247, guid: 8442b4faf90121c44b026c67b02a7923, type: 3}
+      propertyPath: ID
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5265179900781512247, guid: 8442b4faf90121c44b026c67b02a7923, type: 3}
       propertyPath: Name
       value: Skull
